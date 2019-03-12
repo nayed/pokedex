@@ -1,8 +1,20 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+import { Provider } from './context'
+import Index from './components/layout/Index'
 
 class App extends Component {
   render() {
-    return <div>Pokedex</div>
+    return (
+      <Provider>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Index} />
+          </Switch>
+        </Router>
+      </Provider>
+    )
   }
 }
 
