@@ -1,5 +1,6 @@
 {
   "name": "pokedex",
+  "homepage": "https://nayed.github.io/pokedex",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +11,7 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/styled-components": "^4.1.12",
     "axios": "^0.18.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
@@ -19,6 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
