@@ -35,20 +35,34 @@ const Data = styled(Box)`
   }
 `
 
+const ResultArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const ResultDataArea = styled.div`
+  flex: 0 0 50%;
+
+  @media (max-width: 576px) {
+    flex: 1 1 auto;
+  }
+`
+
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
 const Preview: React.StatelessComponent<{}> = (props: any) => {
   return (
-    <div style={{ display: 'flex' }}>
-      <div style={{ flex: '0 0 50%' }}>
+    <ResultArea>
+      <ResultDataArea>
         <Name>
           #{props.id} · {capitalize(props.name)}
         </Name>
         <Box>
           <Img src={props.sprites.front_default} />
         </Box>
-      </div>
-      <div style={{ flex: '0 0 50%' }}>
+      </ResultDataArea>
+
+      <ResultDataArea>
         <Data>
           <p>Abilities:</p>
           <ul>
@@ -70,8 +84,8 @@ const Preview: React.StatelessComponent<{}> = (props: any) => {
 
           <p>Weight: {props.weight / 10} kg</p>
         </Data>
-      </div>
-    </div>
+      </ResultDataArea>
+    </ResultArea>
   )
 }
 
