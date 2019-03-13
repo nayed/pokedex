@@ -3,6 +3,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 
 import { Consumer } from '../../context'
+import Box from '../layout/Box'
 import Preview from './Preview'
 
 import PokeSVG from '../../images/pokeball.svg'
@@ -10,17 +11,6 @@ import PokeSVG from '../../images/pokeball.svg'
 const Pokeball = styled.img`
   height: 50px;
   vertical-align: middle;
-`
-
-const Box = styled.div`
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-color: grey;
-  border-radius: 0.25rem;
-  border-width: 1px 1px 4px 1px;
-  margin-bottom: 3rem;
-  padding: 1.25rem;
-  text-align: center;
 `
 
 const H1 = styled.h1`
@@ -47,13 +37,11 @@ const Btn = styled.button`
   border-color: transparent;
 `
 
-interface Props {}
-
 interface State {
   pokemonName: string
 }
 
-class Search extends React.Component<Props, State> {
+class Search extends React.Component<any, State> {
   state: State = { pokemonName: '' }
 
   findPokemon = (dispatch: any, e: any) => {
@@ -97,7 +85,7 @@ class Search extends React.Component<Props, State> {
                 </form>
               </Box>
               {Object.keys(pokemonData).length > 0 && (
-                <Preview {...pokemonData} />
+                <Preview {...pokemonData} {...this.props} />
               )}
             </>
           )

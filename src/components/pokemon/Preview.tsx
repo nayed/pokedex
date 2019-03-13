@@ -1,15 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const Box = styled.div`
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-color: grey;
-  border-radius: 0.25rem;
-  border-width: 1px 1px 4px 1px;
+import B from '../layout/Box'
+
+const Box = styled(B)`
   margin: 0 1rem 1rem 1rem;
-  padding: 1.25rem;
-  text-align: center;
 `
 
 const Name = styled(Box)`
@@ -27,7 +23,7 @@ const Img = styled.img`
 const Data = styled(Box)`
   background-color: #c5283d;
   border-color: #73000f;
-  color: #ffffff;
+  color: #fff8f0;
   text-align: left;
 
   ul {
@@ -48,9 +44,29 @@ const ResultDataArea = styled.div`
   }
 `
 
+const A = styled(Link)`
+  margin: 1rem auto;
+
+  &:link {
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+`
+
+const LinkProfile = styled(Box)`
+  background-color: #577590;
+  border-color: #183752;
+  color: #fff8f0;
+  font-size: 1.25rem;
+`
+
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
 
-const Preview: React.StatelessComponent<{}> = (props: any) => {
+const Preview: React.StatelessComponent<any> = (props: any) => {
   return (
     <ResultArea>
       <ResultDataArea>
@@ -85,6 +101,13 @@ const Preview: React.StatelessComponent<{}> = (props: any) => {
           <p>Weight: {props.weight / 10} kg</p>
         </Data>
       </ResultDataArea>
+      {props.location &&
+        props.location.pathname &&
+        props.location.pathname === '/' && (
+          <A to={`/profile/${props.name}`}>
+            <LinkProfile>Go to {capitalize(props.name)} profile </LinkProfile>
+          </A>
+        )}
     </ResultArea>
   )
 }
