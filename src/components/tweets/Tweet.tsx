@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner'
 import Box from '../layout/Box'
 
 interface State {
-  tweets: Array<Object>
+  tweets: Array<Object> | null
 }
 
 const TW = styled(Box)`
@@ -18,7 +18,7 @@ const TW = styled(Box)`
   width: 25rem;
 `
 
-class Tweet extends React.Component<any, any> {
+class Tweet extends React.Component<any, State> {
   constructor(props: any) {
     super(props)
 
