@@ -67,7 +67,6 @@ class Search extends React.Component<any, State> {
       <Consumer>
         {(value: any) => {
           const { dispatch, pokemonData } = value
-          console.log(pokemonData)
           return (
             <>
               <Box>

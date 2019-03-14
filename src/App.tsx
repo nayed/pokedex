@@ -8,14 +8,14 @@ import Profile from './components/layout/Profile'
 class App extends Component {
   render() {
     return (
-      <Provider>
-        <Router basename={process.env.PUBLIC_URL}>
+      <Router basename={process.env.PUBLIC_URL}>
+        <Provider>
           <Switch>
             <Route exact path="/" component={Index} />
             <Route exact path="/profile/:name" component={Profile} />
           </Switch>
-        </Router>
-      </Provider>
+        </Provider>
+      </Router>
     )
   }
 }

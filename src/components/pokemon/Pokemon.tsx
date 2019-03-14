@@ -73,7 +73,6 @@ class Pokemon extends React.Component<any, State> {
   }
 
   stats(stats: Array<Object>) {
-    console.log(stats)
     return (
       <Table>
         <thead>
@@ -94,7 +93,6 @@ class Pokemon extends React.Component<any, State> {
   }
 
   render() {
-    // console.log(this.state)
     const { data, name } = this.state
     if (Object.keys(data).length > 0) {
       return (
