@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Preview from './Preview'
 import Spinner from '../layout/Spinner'
 import Box from '../layout/Box'
+import Tweet from '../tweets/Tweet'
 
 interface State {
   name: string
@@ -94,17 +95,22 @@ class Pokemon extends React.Component<any, State> {
 
   render() {
     // console.log(this.state)
-    const { data } = this.state
+    const { data, name } = this.state
     if (Object.keys(data).length > 0) {
       return (
         <>
           <A to="/" className="btn btn-dark btn-sm mb-4">
             Go back
           </A>
+
           <Preview {...data} {...this.props} />
+
           {data.flavor_text_entries &&
             this.description(data.flavor_text_entries)}
+
           {data.stats && this.stats(data.stats)}
+
+          <Tweet name={name} />
         </>
       )
     } else {
