@@ -77,6 +77,7 @@ class Search extends React.Component<any, State> {
                     value={this.state.pokemonName}
                     name="pokemonName"
                     onChange={this.onChange}
+                    autoComplete="off"
                   />
                   <Btn type="submit">
                     <Pokeball src={PokeSVG} alt="pokeball svg" />
