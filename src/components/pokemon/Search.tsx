@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { Consumer } from '../../context'
 import Box from '../layout/Box'
 import Preview from './Preview'
+import Autosuggest from './Autosuggest'
 
 import PokeSVG from '../../images/pokeball.svg'
 
@@ -37,52 +38,23 @@ const Btn = styled.button`
   border-color: transparent;
 `
 
-interface State {
-  pokemonName: string
-}
+interface Props {}
 
-class Search extends React.Component<any, State> {
-  state: State = { pokemonName: '' }
+interface State {}
 
-  findPokemon = (dispatch: any, e: any) => {
-    e.preventDefault()
-
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${this.state.pokemonName}`)
-      .then(res => {
-        dispatch({
-          type: 'SEARCH_POKEMON',
-          payload: res.data
-        })
-      })
-      .catch(err => console.log(err))
-  }
-
-  onChange = (e: any) => {
-    this.setState({ pokemonName: e.target.value })
-  }
-
+class Search extends React.Component<Props, State> {
   render() {
     return (
       <Consumer>
         {(value: any) => {
-          const { dispatch, pokemonData } = value
+          const { pokemonData } = value
           return (
             <>
               <Box>
                 <H1>Search a Pokemon</H1>
-                <form onSubmit={this.findPokemon.bind(this, dispatch)}>
-                  <Input
-                    placeholder="Enter Pokemon name or ID"
-                    value={this.state.pokemonName}
-                    name="pokemonName"
-                    onChange={this.onChange}
-                    autoComplete="off"
-                  />
-                  <Btn type="submit">
-                    <Pokeball src={PokeSVG} alt="pokeball svg" />
-                  </Btn>
-                </form>
+                <div style={{ display: 'inline-flex' }}>
+                  <Autosuggest />
+                </div>
               </Box>
               {Object.keys(pokemonData).length > 0 && (
                 <Preview {...pokemonData} {...this.props} />
