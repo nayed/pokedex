@@ -157,6 +157,12 @@ class Autosuggest extends React.Component<Props, State> {
       .catch(err => console.log(err))
   }
 
+  onSubmit = (dispatch: Function, e: any) => {
+    e.preventDefault()
+
+    this.fetchPokemonData(dispatch, e.target[0].value)
+  }
+
   render() {
     const { value, suggestions } = this.state
 
@@ -173,20 +179,22 @@ class Autosuggest extends React.Component<Props, State> {
           // console.log(context)
           const { dispatch, pokemonName } = context
           return (
-            <RAS
-              theme={theme}
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-              onSuggestionSelected={this.onSuggestionSelected.bind(
-                this,
-                dispatch,
-                pokemonName
-              )}
-              getSuggestionValue={this.getSuggestionValue}
-              renderSuggestion={this.renderSuggestion}
-              inputProps={inputProps}
-            />
+            <form onSubmit={this.onSubmit.bind(this, dispatch)}>
+              <RAS
+                theme={theme}
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                onSuggestionSelected={this.onSuggestionSelected.bind(
+                  this,
+                  dispatch,
+                  pokemonName
+                )}
+                getSuggestionValue={this.getSuggestionValue}
+                renderSuggestion={this.renderSuggestion}
+                inputProps={inputProps}
+              />
+            </form>
           )
         }}
       </Consumer>
