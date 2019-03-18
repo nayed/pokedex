@@ -30,21 +30,32 @@ const Description = styled(Box)`
 `
 
 const Table = styled.table`
+  background: #fff;
   border: 1px solid grey;
   border-radius: 0.25rem;
   border-width: 1px 1px 4px 1px;
-  color: #222;
   margin-bottom: 2rem;
   width: 100%;
 
   th {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   th,
   td {
     border-bottom: 1px solid #dee2e6;
     padding: 0.75rem;
+  }
+
+  tbody tr td {
+    text-transform: capitalize;
+
+    &:first-child {
+      border-right: 1px solid #dee2e6;
+    }
+    &:last-child {
+      text-align: center;
+    }
   }
 `
 
@@ -91,6 +102,8 @@ class Pokemon extends React.Component<any, State> {
   }
 
   stats(stats: Array<Object>) {
+    stats.sort((a: any, b: any) => a.stat.name.localeCompare(b.stat.name))
+
     return (
       <Table>
         <thead>
