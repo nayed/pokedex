@@ -31,11 +31,7 @@ class Tweet extends React.Component<any, State> {
 
   componentDidMount() {
     axios
-      .get(
-        `https://cors-anywhere.herokuapp.com/https://pokedex-api.nayed.now.sh/tweets/${
-          this.props.name
-        }`
-      )
+      .get(`https://pokedex-api.nayed.now.sh/tweets/${this.props.name}`)
       .then(res => this.setState({ tweets: res.data.statuses }))
   }
 
