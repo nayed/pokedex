@@ -1,14 +1,14 @@
 import React from 'react'
-import spinner from './spinner.gif'
+import { BeatLoader } from 'react-spinners'
+
+const css: any = {
+  margin: '2rem auto'
+}
 
 export default () => {
   return (
-    <div>
-      <img
-        src={spinner}
-        alt="Loading..."
-        style={{ width: '200px', margin: ' 40px auto', display: 'block' }}
-      />
+    <div style={{ textAlign: 'center' }}>
+      <BeatLoader size={25} color={'#183059'} css={css} />
     </div>
   )
 }
