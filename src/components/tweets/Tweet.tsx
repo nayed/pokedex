@@ -12,7 +12,6 @@ interface State {
 
 const TW = styled(Box)`
   height: 35rem;
-  margin: 1rem 0 2rem 0;
   overflow: scroll;
   padding: 0;
   width: 25rem;
@@ -40,16 +39,13 @@ class Tweet extends React.Component<any, State> {
     const { name } = this.props
 
     return tweets !== null ? (
-      <>
-        Latest tweets about {name}:
-        <TW>
-          {tweets.map((item: any) => (
-            <div key={item.id_str}>
-              <TwitterTweetEmbed tweetId={item.id_str} />
-            </div>
-          ))}
-        </TW>
-      </>
+      <TW>
+        {tweets.map((item: any) => (
+          <div key={item.id_str}>
+            <TwitterTweetEmbed tweetId={item.id_str} />
+          </div>
+        ))}
+      </TW>
     ) : (
       <Spinner />
     )

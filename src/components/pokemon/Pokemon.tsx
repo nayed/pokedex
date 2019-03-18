@@ -37,10 +37,28 @@ const Table = styled.table`
   margin-bottom: 2rem;
   width: 100%;
 
+  th {
+    font-size: 1.5rem;
+  }
+
   th,
   td {
     border-bottom: 1px solid #dee2e6;
     padding: 0.75rem;
+  }
+`
+
+const StatsTweetsArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const StatsTweets = styled.div`
+  flex: 0 0 50%;
+  padding: 1rem;
+
+  @media (max-width: 576px) {
+    flex: 1 1 auto;
   }
 `
 
@@ -77,7 +95,7 @@ class Pokemon extends React.Component<any, State> {
       <Table>
         <thead>
           <tr>
-            <th colSpan={2}>Stats</th>
+            <th colSpan={2}>Base Stats</th>
           </tr>
         </thead>
         <tbody>
@@ -94,6 +112,7 @@ class Pokemon extends React.Component<any, State> {
 
   render() {
     const { data, name } = this.state
+    const center = 'center'
     if (Object.keys(data).length > 0) {
       return (
         <>
@@ -106,9 +125,12 @@ class Pokemon extends React.Component<any, State> {
           {data.flavor_text_entries &&
             this.description(data.flavor_text_entries)}
 
-          {data.stats && this.stats(data.stats)}
-
-          <Tweet name={name} />
+          <StatsTweetsArea>
+            <StatsTweets>{data.stats && this.stats(data.stats)}</StatsTweets>
+            <StatsTweets>
+              <Tweet name={name} />
+            </StatsTweets>
+          </StatsTweetsArea>
         </>
       )
     } else {
