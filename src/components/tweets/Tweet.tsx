@@ -12,9 +12,14 @@ interface State {
 
 const TW = styled(Box)`
   height: 35rem;
+  margin: 0 auto;
   overflow: scroll;
   padding: 0;
-  width: 25rem;
+  width: 19rem;
+
+  @media (min-width: 770px) {
+    width: 25rem;
+  }
 `
 
 class Tweet extends React.Component<any, State> {
