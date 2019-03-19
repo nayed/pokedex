@@ -39,7 +39,7 @@ const ResultArea = styled.div`
 const ResultDataArea = styled.div`
   flex: 0 0 50%;
 
-  @media (max-width: 576px) {
+  @media (max-width: 36rem) {
     flex: 1 1 auto;
   }
 `

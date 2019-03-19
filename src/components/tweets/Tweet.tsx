@@ -12,13 +12,23 @@ interface State {
 
 const TW = styled(Box)`
   height: 35rem;
-  margin: 0 auto;
   overflow: scroll;
   padding: 0;
-  width: 19rem;
+  width: 13rem;
 
-  @media (min-width: 770px) {
-    width: 25rem;
+  @media (max-width: 36rem) {
+    margin: 0 auto;
+    width: 20rem;
+  }
+
+  @media (min-width: 48rem) {
+    margin: 0 auto;
+    width: 19rem;
+  }
+
+  @media (min-width: 62rem) {
+    margin: 0 auto;
+    width: 26rem;
   }
 `
 

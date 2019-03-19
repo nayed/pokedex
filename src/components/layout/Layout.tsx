@@ -8,24 +8,21 @@ const Container = styled.div`
   margin-right: auto;
   padding-left: 1rem;
   padding-right: 1rem;
-  // display: flex;
-  // flex-direction: column;
-  // min-height: 100vh;
 
-  @media (min-width: 576px) {
-    max-width: 540px;
+  @media (min-width: 36rem) {
+    max-width: 33.75rem;
   }
 
-  @media (min-width: 768px) {
-    max-width: 720px;
+  @media (min-width: 48rem) {
+    max-width: 45rem;
   }
 
-  @media (min-width: 992px) {
-    max-width: 960px;
+  @media (min-width: 62rem) {
+    max-width: 60rem;
   }
 
-  @media (min-width: 1200px) {
-    max-width: 1140px;
+  @media (min-width: 75rem) {
+    max-width: 71.25rem;
   }
 `
 
