@@ -97,8 +97,16 @@ class Pokemon extends React.Component<any, State> {
   }
 
   description(desc: Array<Object>) {
-    const msg: any = desc.find((item: any) => item.language.name === 'en')
-    return <Description>{msg.flavor_text}</Description>
+    const msg: any = desc
+      .filter((item: any) => item.language.name === 'en')
+      .map((item: any) => item.flavor_text)
+
+    const uniqueMsg: Array<string> = Array.from(new Set(msg))
+
+    const randomMsg: string =
+      uniqueMsg[Math.floor(Math.random() * uniqueMsg.length)]
+
+    return <Description>{randomMsg}</Description>
   }
 
   stats(stats: Array<Object>) {
