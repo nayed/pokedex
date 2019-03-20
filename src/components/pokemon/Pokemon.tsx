@@ -115,12 +115,27 @@ class Pokemon extends React.Component<any, State> {
           {stats.map((item: any) => (
             <tr key={stats.indexOf(item)}>
               <td>{item.stat.name}</td>
-              <td>{item.base_stat}</td>
+              <td>{this.colorBaseState(item.base_stat)}</td>
             </tr>
           ))}
         </tbody>
       </Table>
     )
+  }
+
+  colorBaseState = (stat: number) => {
+    switch (true) {
+      case stat < 25:
+        return <span style={{ color: '#1E91D6' }}>{stat}</span>
+      case stat < 50:
+        return <span style={{ color: '#8FC93A' }}>{stat}</span>
+      case stat < 75:
+        return <span style={{ color: '#E4CC37' }}>{stat}</span>
+      case stat < 100:
+        return <span style={{ color: '#E18335' }}>{stat}</span>
+      default:
+        return <span style={{ color: '#c5283d', fontWeight: 700 }}>{stat}</span>
+    }
   }
 
   render() {
