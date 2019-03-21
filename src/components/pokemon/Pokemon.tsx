@@ -112,6 +112,10 @@ class Pokemon extends React.Component<any, State> {
   stats(stats: Array<Object>) {
     stats.sort((a: any, b: any) => a.stat.name.localeCompare(b.stat.name))
 
+    const total = stats
+      .map((item: any) => item.base_stat)
+      .reduce((acc, currentValue) => acc + currentValue)
+
     return (
       <Table>
         <thead>
@@ -126,6 +130,10 @@ class Pokemon extends React.Component<any, State> {
               <td>{this.colorBaseState(item.base_stat)}</td>
             </tr>
           ))}
+          <tr>
+            <td>Total</td>
+            <td style={{ fontWeight: 700 }}>{total}</td>
+          </tr>
         </tbody>
       </Table>
     )
